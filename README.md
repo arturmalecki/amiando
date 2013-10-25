@@ -19,7 +19,14 @@ Otherwise it will use `multi_json`'s bundled json parser.
 ## Basic usage
 
 The gem has been implemented with the idea that requests can be done in
-parallel using [Typhoeus](https://github.com/dbalatero/typhoeus).
+parallel using [Typhoeus](https://github.com/typhoeus/typhoeus).
+
+First the API key and base URL need to be configured properly:
+
+    Amiando.base_url = 'https://www.amiando.com'
+    Amiando.api_key = 'your API key'
+
+To get API key use this [link](http://developers.amiando.com/index.php/How_to_get_your_API_key).
 
 You can query multiple requests and run then like this:
 
@@ -39,6 +46,17 @@ You can also do synchronous requests by prepending 'sync_' to the method name:
 All attributes should be used in snake_case format instead of the CamelCase
 used in the official documentation. For example, for a user, you should call
 first_name instead of firstName.
+
+### Pro-Tips
+
+In case of such error when you try to run tests:
+
+    webmock-1.7.10/lib/webmock/http_lib_adapters/typhoeus_hydra_adapter.rb:167:in `alias_method': undefined method `queue' for class `Typhoeus::Hydra' (NameError)
+
+probably you need to install:
+
+    libcurl
+
 
 ## Documentation
 
